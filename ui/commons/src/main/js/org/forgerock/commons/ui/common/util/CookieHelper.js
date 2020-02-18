@@ -33,20 +33,22 @@ define([
      * @param {Boolean} [secure] - is cookie secure.
      * @returns {String} created cookie.
      */
-    obj.createCookie = function (name, value, expirationDate, path, domain, secure) {
+    obj.createCookie = function (name, value, expirationDate, path, domain, secure, sameSite) {
         var expirationDatePart,
             nameValuePart,
             pathPart,
             domainPart,
-            securePart;
+            securePart,
+            sameSitePart;
 
         expirationDatePart = expirationDate ? ";expires=" + expirationDate.toGMTString() : "";
         nameValuePart = name + "=" + value;
         pathPart = path ? ";path=" + path : "";
         domainPart = domain ? ";domain=" + domain : "";
         securePart = secure ? ";secure" : "";
+        sameSitePart = sameSite ? ";SameSite="+sameSite : "";
 
-        return nameValuePart + expirationDatePart + pathPart + domainPart + securePart;
+        return nameValuePart + expirationDatePart + pathPart + domainPart + securePart + sameSitePart;
     };
 
     /**
@@ -58,16 +60,16 @@ define([
      * @param {String|String[]} [domain] - cookie domain(s). Use empty array for creating host-only cookies.
      * @param {Boolean} [secure] - is cookie secure.
      */
-    obj.setCookie = function (name, value, expirationDate, path, domains, secure) {
+    obj.setCookie = function (name, value, expirationDate, path, domains, secure, sameSite) {
         if (!_.isArray(domains)) {
             domains = [domains];
         }
 
         if (domains.length === 0) {
-            document.cookie = obj.createCookie(name, value, expirationDate, path, undefined, secure);
+            document.cookie = obj.createCookie(name, value, expirationDate, path, undefined, secure, sameSite);
         } else {
             _.each(domains, function(domain) {
-                document.cookie = obj.createCookie(name, value, expirationDate, path, domain, secure);
+                document.cookie = obj.createCookie(name, value, expirationDate, path, domain, secure, sameSite);
             });
         }
     };

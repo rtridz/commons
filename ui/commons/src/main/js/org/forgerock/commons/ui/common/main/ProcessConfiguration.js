@@ -82,12 +82,12 @@ define([
                     service[methodName].apply(service, params || []);
                 }
             }, function (exception) {
-                if(params) {
-                    params = JSON.stringify(params);
-                }
-                console.warn("Unable to invoke serviceId=" + serviceId + " method=" + methodName
-                    + " params=" + params + " exception=" + exception);
+            if(params) {
+                params = JSON.stringify(params);
             }
+            console.warn("Unable to invoke serviceId=" + serviceId + " method=" + methodName
+                    + " params=" + params + " exception=" + exception);
+        }
         );
     };
 

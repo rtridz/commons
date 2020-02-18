@@ -75,6 +75,7 @@ define([
 
         conf.globalData.auth.cookieName = config.cookieName;
         conf.globalData.auth.cookieDomains = config.domains;
+        conf.globalData.auth.cookieSameSite = config.cookieSameSite;
     };
 
     obj.configurePage = function (route, params) {

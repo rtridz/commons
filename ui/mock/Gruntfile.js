@@ -27,17 +27,17 @@ module.exports = function (grunt) {
         testTargetDirectory = "target/test",
         sourceDirectory = "src/main/js",
         watchDirs = [
-            "../forgerock-ui-commons/src/main/js",
-            "../forgerock-ui-commons/src/main/resources",
-            "../forgerock-ui-user/src/main/js",
-            "../forgerock-ui-user/src/main/resources",
+            "../commons/src/main/js",
+            "../commons/src/main/resources",
+            "../user/src/main/js",
+            "../user/src/main/resources",
             "src/main/js",
             "src/main/resources"
         ],
         testWatchDirs = {
             "src/test/qunit": "/",
-            "../forgerock-ui-commons/src/test/qunit": "/tests/commons/",
-            "../forgerock-ui-user/src/test/qunit": "/tests/user/"
+            "../commons/src/test/qunit": "/tests/commons/",
+            "../user/src/test/qunit": "/tests/user/"
         };
 
     grunt.initConfig({
